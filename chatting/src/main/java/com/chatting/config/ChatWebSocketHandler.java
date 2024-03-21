@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
-@Component
+//@Component
 public class ChatWebSocketHandler implements WebSocketHandler {
 
     private final ChatService chatService;
@@ -26,4 +26,6 @@ public class ChatWebSocketHandler implements WebSocketHandler {
         Flux<Chat> chatFlux = chatService.findAllChats();
         return session.send(chatFlux.map(chat -> session.textMessage(chat.toString())));
     }
+
+
 }
